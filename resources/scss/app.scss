@@ -1,0 +1,16 @@
+//Import di Bootstrap SCSS 
+@import "~bootstrap/scss/bootstrap";
+
+@import '@fortawesome/fontawesome-free/css/all.css';
+
+//Dimensioni logo
+#logoBox{
+    width: 3rem;
+    height: 3rem;
+
+    img{
+        width: 3rem;
+        height: 3rem;
+        object-fit: cover;
+    }
+}
