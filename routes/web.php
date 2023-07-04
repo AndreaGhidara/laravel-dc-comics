@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ComixController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,15 +15,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 //rotta per la HOME
-Route::get('/', function () {
-    $links = config('store.navbarLinks');
-    return view('welcome', compact('links'));
-});
+// Route::get('/', function () {
+//     $links = config('store.navbarLinks');
+//     return view('partials.', compact('links'));
+// });
 
-//rotta per la INFO
-Route::get('/infopage', function () {
-    //Prendo i link dallo store
-    $links = config('store.navbarLinks');
-    //li passo alla view INFO
-    return view('info', compact('links'));
-});
+Route::get('/', [ComixController::class, "index"])->name("home");
+
+Route::resource("comics", ComixController::class);
+
+// //rotta per la INFO
+// Route::get('/infopage', function () {
+//     //Prendo i link dallo store
+//     $links = config('store.navbarLinks');
+//     //li passo alla view INFO
+//     return view('info', compact('links'));
+// });

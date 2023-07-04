@@ -14,11 +14,11 @@
                             alt="">
                     </div>
                     <div class="d-flex align-items-center">
-                        @foreach ($links as $link)
+                        {{-- @foreach ($links as $link)
                             <a class="text-white px-2" href="{{ $link['href'] }}">
                                 {{ $link['text'] }}
                             </a>
-                        @endforeach
+                        @endforeach --}}
                     </div>
                 </div>
                 {{-- Title-Site --}}
@@ -56,8 +56,10 @@
         </div>
 
     </nav>
-    <div class="jubotronCustom bg-warning">
-        <h2>Jumbotron</h2>
+    <div class="container">
+        <div class="jubotronCustom bg-warning">
+            <h2>Jumbotron</h2>
+        </div>
     </div>
 
 </header>
