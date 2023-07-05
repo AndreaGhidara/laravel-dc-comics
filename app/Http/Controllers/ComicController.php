@@ -47,7 +47,7 @@ class ComicController extends Controller
         $newProduct->series = $data['series'];
         $newProduct->sale_date = $data['sale_date'];
         $newProduct->type = $data['type'];
-        $newProduct->artists = $data['artists'];
+        $newProduct->artists = json_decode($data['artists']);
         $newProduct->writers = $data['writers'];
         $newProduct->save();
         
@@ -78,7 +78,7 @@ class ComicController extends Controller
      */
     public function edit(Comic $comic)
     {
-        return view("comic.edit", compact("comic"));
+        return view("comics.edit", compact("comic"));
     }
 
     /**
@@ -92,7 +92,6 @@ class ComicController extends Controller
     {
         $data = $request->all();
         
-        $comic = new Comic;
         $comic->title = $data['title'];
         $comic->description = $data['description'];
         $comic->thumb = $data['thumb'];
@@ -102,8 +101,14 @@ class ComicController extends Controller
         $comic->type = $data['type'];
         $comic->artists = $data['artists'];
         $comic->writers = $data['writers'];
-        $comic->save();
+        $comic->update();
 
+        // dump() stampa i dati e continua l'esecuzione
+        // per interrompere il flusso usare dd() oppure ddd()
+        // dd($product);
+        // dd($request);
+
+        return redirect()->route('comics.show', $comic->id);
     }
 
     /**
@@ -112,8 +117,10 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Comic $comic)
     {
-        //
+        $comic->delete();
+
+        return redirect()->route('comics.index');
     }
 }

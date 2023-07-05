@@ -22,12 +22,17 @@
             </div>
         </div>
     </div>
-    <div class="row text-center py-3">
+    <div class="row flex-column text-center py-3">
         <a href="{{route("home")}}">
             <div class="btn btn-success w-25">
                 Back To Home
             </div>
         </a>
+        <form action="{{ route('comics.destroy', $comic) }}" method="post" class="py-3">
+            @csrf
+            @method('DELETE')
+            <input class="btn btn-danger" type="submit" value="Cancella il prodotto">
+        </form>
     </div>
 </div>
 
