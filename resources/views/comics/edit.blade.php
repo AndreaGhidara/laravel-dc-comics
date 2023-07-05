@@ -6,11 +6,8 @@
 
 <div class="container">
     <div class="row">
-        <div>
-            <form action="{{ route('comics.store') }}" method="post">
-                {{--@csrf serve per la sicurezza --}}
-                @csrf
-
+        <div class="col">
+            <form action="{{route('comics.update', $comic->id)}}" method="post" >
                 <label for="">title</label>
                 <input class="form-control" name="title" type="text">
 
@@ -45,5 +42,6 @@
         </div>
     </div>
 </div>
+
 
 @endsection

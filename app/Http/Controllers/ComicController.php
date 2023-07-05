@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\comicBook;
+use App\Models\Comic;
 use Illuminate\Http\Request;
 
-class ComixController extends Controller
+class ComicController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class ComixController extends Controller
      */
     public function index()
     {
-        $comics = comicBook::all();
+        $comics = Comic::all();
 
         return view("comics.index", compact("comics"));
     }
@@ -39,7 +39,7 @@ class ComixController extends Controller
     {
         $data = $request->all();
 
-        $newProduct = new comicBook;
+        $newProduct = new Comic;
         $newProduct->title = $data['title'];
         $newProduct->description = $data['description'];
         $newProduct->thumb = $data['thumb'];
@@ -61,13 +61,13 @@ class ComixController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function show(Product $product) //non va
-    public function show($id)
+    // public function show($id)
+    public function show(Comic $comic)
     {
-        // $comix = comicBook::find($id);
-        $comix = comicBook::findOrFail($id);
+        // $comic = comic::find($id);
+        // $comic = comic::findOrFail($id);
 
-        return view("comics.show", compact("comix"));
+        return view("comics.show", compact("comic"));
     }
 
     /**
@@ -76,9 +76,9 @@ class ComixController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Comic $comic)
     {
-        //
+        return view("comic.edit", compact("comic"));
     }
 
     /**
@@ -88,9 +88,22 @@ class ComixController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Comic $comic)
     {
-        //
+        $data = $request->all();
+        
+        $comic = new Comic;
+        $comic->title = $data['title'];
+        $comic->description = $data['description'];
+        $comic->thumb = $data['thumb'];
+        $comic->price = $data['price'];
+        $comic->series = $data['series'];
+        $comic->sale_date = $data['sale_date'];
+        $comic->type = $data['type'];
+        $comic->artists = $data['artists'];
+        $comic->writers = $data['writers'];
+        $comic->save();
+
     }
 
     /**

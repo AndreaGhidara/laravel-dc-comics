@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ComixController;
+use App\Http\Controllers\comicController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,9 +20,9 @@ use Illuminate\Support\Facades\Route;
 //     return view('partials.', compact('links'));
 // });
 
-Route::get('/', [ComixController::class, "index"])->name("home");
+Route::get('/', [ComicController::class, "index"])->name("home");
 
-Route::resource("comics", ComixController::class);
+Route::resource("comics", ComicController::class);
 
 // //rotta per la INFO
 // Route::get('/infopage', function () {

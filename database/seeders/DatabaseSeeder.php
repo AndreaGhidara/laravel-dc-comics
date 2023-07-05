@@ -21,6 +21,6 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        $this->call(ComicxTableSeeder::class);
+        $this->call(ComicTableSeeder::class);
     }
 }
