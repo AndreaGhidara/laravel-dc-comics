@@ -12,34 +12,34 @@
 
                 @method("PUT")
 
-                <label for="">title</label>
+                <label for="title">title</label>
                 <input class="form-control" name="title" type="text" value="{{$comic->title}}">
 
-                <label for="">description</label>
+                <label for="description">description</label>
                 <textarea class="form-control" name="description" id="" cols="30" rows="10">
-                    {{$product->description}}
+                    {{$comic->description}}
                 </textarea>
 
-                <label for="">thumb</label>
-                <input class="form-control" name="thumb" type="text" placeholder="{{$$comic->thumb}}">
+                <label for="thumb">thumb</label>
+                <input class="form-control" name="thumb" type="text" value="{{$comic->thumb}}">
 
-                <label for="">price</label>
-                <input class="form-control" name="price" type="text" value="{{$product->price}}">
+                <label for="price">price</label>
+                <input class="form-control" name="price" type="text" value="{{$comic->price}}">
 
-                <label for="">series</label>
-                <input class="form-control" name="series" type="text" value="{{$product->series}}">
+                <label for="series">series</label>
+                <input class="form-control" name="series" type="text" value="{{$comic->series}}">
 
-                <label for="">sale_date</label>
-                <input class="form-control" name="sale_date" type="date" value="{{$product->sale_date}}">
+                <label for="sale_date">sale_date</label>
+                <input class="form-control" name="sale_date" type="date" value="{{$comic->sale_date}}">
                 
-                <label for="">type</label>
-                <input class="form-control" name="type" type="text" value="{{$product->type}}">
+                <label for="type">type</label>
+                <input class="form-control" name="type" type="text" value="{{$comic->type}}">
                 
-                <label for="">artists</label>
-                <input class="form-control" name="artists" type="text" value="{{$product->artists}}">
+                <label for="artists">artists</label>
+                <input class="form-control" name="artists" type="text" value="{{$comic->artists}}">
 
-                <label for="">writers</label>
-                <input class="form-control" name="writers" type="text" value="{{$product->writers}}">
+                <label for="writers">writers</label>
+                <input class="form-control" name="writers" type="text" value="{{$comic->writers}}">
 
                 <button class="form-control mt-3" type="submit">
                     invia

@@ -48,7 +48,7 @@ class ComicController extends Controller
         $newProduct->sale_date = $data['sale_date'];
         $newProduct->type = $data['type'];
         $newProduct->artists = json_decode($data['artists']);
-        $newProduct->writers = $data['writers'];
+        $newProduct->writers = json_decode($data['writers']);
         $newProduct->save();
         
         
