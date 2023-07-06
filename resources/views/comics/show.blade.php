@@ -58,6 +58,7 @@
                 <form action="{{ route('comics.destroy', $comic) }}" method="post" class="p-3">
                     @csrf
                     @method('DELETE')
+                    
                     <input class="btn btn-danger" type="submit" value="Cancella il prodotto">
                 </form>
 

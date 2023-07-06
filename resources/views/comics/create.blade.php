@@ -5,38 +5,77 @@
 @section('content')
 
 <div class="container">
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+</div>
+
+<div class="container">
     <div class="row">
         <div>
-            <form action="{{ route('comics.store') }}" method="post">
+            <form action="{{ route('comics.store') }}" method="post" class="needs-validation">
                 {{--@csrf serve per la sicurezza --}}
                 @csrf
 
-                <label for="">title</label>
-                <input class="form-control" name="title" type="text">
+                <label for="title">title</label>
+                <input class="form-control  @error('title') is-invalid @enderror" name="title" type="text">
+                @error("title")
+                    <div class="invalid-feedback">{{$message}}</div>
+                @enderror
 
-                <label for="">description</label>
-                <textarea class="form-control" name="description" id="" cols="30" rows="10"></textarea>
+                <label for="description">description</label>
+                <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="" cols="30" rows="10"></textarea>
+                @error("description")
+                    <div class="invalid-feedback">{{$message}}</div>
+                @enderror
 
-                <label for="">thumb</label>
-                <input class="form-control" name="thumb" type="text" placeholder="url.">
+                <label for="thumb">thumb</label>
+                <input class="form-control @error('thumb') is-invalid @enderror" name="thumb" type="text" placeholder="url.">
+                @error("thumb")
+                    <div class="invalid-feedback">{{$message}}</div>
+                @enderror
 
-                <label for="">price</label>
-                <input class="form-control" name="price" type="text">
+                <label for="price">price</label>
+                <input class="form-control @error('price') is-invalid @enderror" name="price" type="text">
+                @error("price")
+                    <div class="invalid-feedback">{{$message}}</div>
+                @enderror
 
-                <label for="">series</label>
-                <input class="form-control" name="series" type="text">
+                <label for="series">series</label>
+                <input class="form-control @error('series') is-invalid @enderror" name="series" type="text">
+                @error("series")
+                    <div class="invalid-feedback">{{$message}}</div>
+                @enderror
 
-                <label for="">sale_date</label>
-                <input class="form-control" name="sale_date" type="date">
+                <label for="sale_date">sale_date</label>
+                <input class="form-control @error('v') is-invalid @enderror" name="sale_date" type="date">
+                @error("sale_date")
+                    <div class="invalid-feedback">{{$message}}</div>
+                @enderror
                 
-                <label for="">type</label>
-                <input class="form-control" name="type" type="text">
+                <label for="type">type</label>
+                <input class="form-control @error('type') is-invalid @enderror" name="type" type="text">
+                @error("type")
+                    <div class="invalid-feedback">{{$message}}</div>
+                @enderror
                 
-                <label for="">artists</label>
-                <input class="form-control" name="artists" type="text">
+                <label for="artists">artists</label>
+                <input class="form-control @error('artists') is-invalid @enderror" name="artists" type="text">
+                @error("artists")
+                    <div class="invalid-feedback">{{$message}}</div>
+                @enderror
 
-                <label for="">writers</label>
-                <input class="form-control" name="writers" type="text">
+                <label for="writers">writers</label>
+                <input class="form-control @error('writers') is-invalid @enderror" name="writers" type="text">
+                @error("writers")
+                    <div class="invalid-feedback">{{$message}}</div>
+                @enderror
 
                 <button class="form-control mt-3" type="submit">
                     invia
