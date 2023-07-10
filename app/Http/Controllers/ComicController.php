@@ -78,7 +78,8 @@ class ComicController extends Controller
         $newProduct->save();
         
         
-        return redirect()->route('comics.show', $newProduct->id);
+        return to_route('comics.show', $newProduct->id);
+        // return redirect()->route('comics.show', $newProduct->id);
     }
 
     /**
