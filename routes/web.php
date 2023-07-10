@@ -16,9 +16,23 @@ use Illuminate\Support\Facades\Route;
 
 //rotta per la HOME
 // Route::get('/', function () {
-//     $links = config('store.navbarLinks');
-//     return view('partials.', compact('links'));
+//     $data = [
+//         'linkNav' => config('store.linkNav'),
+//         'comicsInfoShop' => config('store.comicsInfoShop'),
+//         'footerDcComics' => config('store.footerDcComics'),
+//         'footerShop' => config('store.footerShop'),
+//         'footerDc' => config('store.footerDc'),
+//         'footerSites' => config('store.footerSites'),
+//         'comicx' => config('comics'),
+
+//     ];
+//     return view('partials.header', $data);
 // });
+
+Route::get('/', function () {
+    $ftLinks = config('store.footerDcComics');
+    return view('partials.footer', compact('ftLinks'));
+});
 
 Route::get('/', [ComicController::class, "index"])->name("home");
 

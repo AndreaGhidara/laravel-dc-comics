@@ -24,55 +24,55 @@
                 @csrf
 
                 <label for="title">title</label>
-                <input class="form-control  @error('title') is-invalid @enderror" name="title" type="text">
+                <input class="form-control  @error('title') is-invalid @enderror" name="title" type="text" value="{{ old("title") }}">
                 @error("title")
                     <div class="invalid-feedback">{{$message}}</div>
                 @enderror
 
                 <label for="description">description</label>
-                <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="" cols="30" rows="10"></textarea>
+                <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="" cols="30" rows="10">{{ old("description") }}"</textarea>
                 @error("description")
                     <div class="invalid-feedback">{{$message}}</div>
                 @enderror
 
                 <label for="thumb">thumb</label>
-                <input class="form-control @error('thumb') is-invalid @enderror" name="thumb" type="text" placeholder="url.">
+                <input class="form-control @error('thumb') is-invalid @enderror" name="thumb" type="text" placeholder="url." value="{{ old("title") }}">
                 @error("thumb")
                     <div class="invalid-feedback">{{$message}}</div>
                 @enderror
 
                 <label for="price">price</label>
-                <input class="form-control @error('price') is-invalid @enderror" name="price" type="text">
+                <input class="form-control @error('price') is-invalid @enderror" name="price" type="text" value="{{ old("price") }}">
                 @error("price")
                     <div class="invalid-feedback">{{$message}}</div>
                 @enderror
 
                 <label for="series">series</label>
-                <input class="form-control @error('series') is-invalid @enderror" name="series" type="text">
+                <input class="form-control @error('series') is-invalid @enderror" name="series" type="text" value="{{ old("series") }}">
                 @error("series")
                     <div class="invalid-feedback">{{$message}}</div>
                 @enderror
 
                 <label for="sale_date">sale_date</label>
-                <input class="form-control @error('v') is-invalid @enderror" name="sale_date" type="date">
+                <input class="form-control @error('v') is-invalid @enderror" name="sale_date" type="date" value="{{ old("sale_date") }}">
                 @error("sale_date")
                     <div class="invalid-feedback">{{$message}}</div>
                 @enderror
                 
                 <label for="type">type</label>
-                <input class="form-control @error('type') is-invalid @enderror" name="type" type="text">
+                <input class="form-control @error('type') is-invalid @enderror" name="type" type="text" value="{{ old("type") }}">
                 @error("type")
                     <div class="invalid-feedback">{{$message}}</div>
                 @enderror
                 
                 <label for="artists">artists</label>
-                <input class="form-control @error('artists') is-invalid @enderror" name="artists" type="text">
+                <input class="form-control @error('artists') is-invalid @enderror" name="artists" type="text" value="{{ old("artists") }}">
                 @error("artists")
                     <div class="invalid-feedback">{{$message}}</div>
                 @enderror
 
                 <label for="writers">writers</label>
-                <input class="form-control @error('writers') is-invalid @enderror" name="writers" type="text">
+                <input class="form-control @error('writers') is-invalid @enderror" name="writers" type="text" value="{{ old("writers") }}">
                 @error("writers")
                     <div class="invalid-feedback">{{$message}}</div>
                 @enderror

@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comic;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreComicRequest;
+use App\Http\Requests\UpdateComicRequest;
 use Illuminate\Support\Facades\Validator;
 
 class ComicController extends Controller
@@ -30,33 +31,31 @@ class ComicController extends Controller
         return view("comics.create");
     }
 
-    private function validateProduct($data) {
-        $validator = Validator::make($data, [
-            "title" => "required|min:5|max:100",
-            "description" => "min:5|max:65535",
-            "thumb" => "max:65535",
-            "price" => "min:4|max:100",
-            "series" => "min:5|max:100",
-            "sale_date" => "max:100",
-            "type" => "required|max:100",
-            "sale_date" => "required|max:100",
-            "type" => "required|max:20",
-            "artists" => "max:3000",
-            "writers" => "max:3000",
-        ], [
-            "title.required" => "Il titolo è obbligatorio",
-            "title.min" => "Il titolo deve essere almeno di :min caratteri",
+    // private function validateProduct($data) {
+    //     $validator = Validator::make($data, [
+    //         "title" => "required|min:5|max:100",
+    //         "description" => "min:5|max:65535",
+    //         "thumb" => "max:65535",
+    //         "price" => "required|min:4|max:100",
+    //         "series" => "min:5|max:100",
+    //         "sale_date" => "required|max:100",
+    //         "type" => "required|max:20",
+    //         "artists" => "max:3000",
+    //         "writers" => "max:3000",
+    //     ], [
+    //         "title.required" => "Il titolo è obbligatorio",
+    //         "title.min" => "Il titolo deve essere almeno di :min caratteri",
 
-            "price.required" => "Il price è obbligatorio",
-            "price.min" => "Il price deve essere almeno di 4 cifre 00.00",
+    //         "price.required" => "Il price è obbligatorio",
+    //         "price.min" => "Il price deve essere almeno di 4 cifre 00.00",
 
-            "sale_date.required" => "La data è obbligatorio",
+    //         "sale_date.required" => "La data è obbligatorio",
 
-            "type.required" => "Il type è obbligatorio",
-            ])->validate();
+    //         "type.required" => "Il type è obbligatorio",
+    //         ])->validate();
 
-        return $validator;
-    }
+    //     return $validator;
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -64,20 +63,18 @@ class ComicController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreComicRequest  $request)
     {
-        $data = $this->validateProduct( $request->all() );
+        // $data = $this->validateProduct( $request->all() );
+        
+        // $newProduct = new Comic;
+        // foreach ($data as $key=>$value){
+        //     $newProduct->$key = $value;
+        // }
+        $data = $request->validated();
 
         $newProduct = new Comic;
-        $newProduct->title = $data['title'];
-        $newProduct->description = $data['description'];
-        $newProduct->thumb = $data['thumb'];
-        $newProduct->price = $data['price'];
-        $newProduct->series = $data['series'];
-        $newProduct->sale_date = $data['sale_date'];
-        $newProduct->type = $data['type'];
-        $newProduct->artists = json_decode($data['artists']);
-        $newProduct->writers = json_decode($data['writers']);
+        $newProduct->fill($data);
         $newProduct->save();
         
         
@@ -117,19 +114,13 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Comic $comic)
+    public function update(UpdateComicRequest $request,Comic $comic)
     {
-        $data = $this->validateProduct( $request->all() );
-        
-        $comic->title = $data['title'];
-        $comic->description = $data['description'];
-        $comic->thumb = $data['thumb'];
-        $comic->price = $data['price'];
-        $comic->series = $data['series'];
-        $comic->sale_date = $data['sale_date'];
-        $comic->type = $data['type'];
-        $comic->artists = json_encode($data['artists']);
-        $comic->writers = json_encode($data['writers']);
+        // $data = $this->validateProduct( $request->all() );
+        $data = $request->validated();
+
+        $comic->fill($data);
+        $comic->save();
         $comic->update();
 
         // dump() stampa i dati e continua l'esecuzione
